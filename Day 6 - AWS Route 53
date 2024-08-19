@@ -1,0 +1,34 @@
+Route 53 - Route 53 on AWS Provides DNS As A Service, DNS Basically stands for Domain Name System (DNS). When we Use EC2 AWS Provides us Compute As A Service, When we Use EKS AWS Provides us Elastic Kubernetes As A Service.
+
+
+On Day-to-Day Basis we use DNS such as Amazon.com, Flipkart.com, But When you are using these things we are Directly or Indirectly using DNS. When we use any Application like in Previous Videos when we deployed an Application like Jenkins or Simple Python Application. We First Created a VPC and Inside the VPC we created Public and Private Subnets, Inside your Private subnet you have you Application and In the Public subnet you have Load Balancer and before that you have many configurations.
+
+
+If we start from here you have a Load Balancer which is getting the request and from the load balancer the request goes to your Application, Or if you don't have the load balancer the request will directly go to your Application. But wether it is a Application or wether it is a Load Balancer when you create these things on AWS or On your On-Premises Datacenter or Anywhere in the World Basically they get assigned with a IP Address, But we never use IP Address in Real World We use the Domain Names like Amazon.com, Flipkart.com, Instagram, Facebook & Others. When you use Domain Names so these Domain Name has to be Eventually converted to the IP Address. For Eg If this Domain Name is tagged to Load Balancer or if the Domain Name is tagged to your Application, So Someone has to Convert this Domain Name Into the IP Address of your Application or Load Balancer. This is Done By the DNS Service, DNS Service Maps your Domain Name with the IP Address or DNS Resolves your Domain Name Into a IP Address. So if you Assign the Domain Name to the LB DNS Service will Resolve that Domain Name into the IP Address of the LB. 
+
+
+
+Note - There are 2 Reasons why we use DNS
+
+1) IP Address are Not Easy to remember because there are multiple IP Addresses [Domain Names are Easy to Remember]
+
+
+2) The IP Address which is Assigned to the Application or LB can change if you stop or reboot your system so we can use the Domain Name.
+
+
+
+
+
+DNS Keeps records and there are huge number of records which are stored in the DNS Server and the Domain Names are Mapped to the IP Addresses.
+
+
+AWS Provides us DNS AS A Service in the form of Route 53 and provides us below mentioned components
+
+
+1) Domain Registration 
+
+
+2) Hosted Zones       [Here we Create DNS Records]
+
+
+3) Health Checks     [Route 53 Checks Health of the Web-Servers]
