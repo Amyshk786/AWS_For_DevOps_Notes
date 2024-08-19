@@ -1,0 +1,294 @@
+What is EC2, and why is it important? 
+
+- Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud.
+
+- Access reliable, scalable infrastructure on demand. Scale capacity within minutes with SLA commitment of 99.99% availability.
+
+- Provide secure compute for your applications. Security is built into the foundation of Amazon EC2 with the AWS Nitro System.
+
+- Optimize performance and cost with flexible options like AWS Graviton-based instances, Amazon EC2 Spot instances, and AWS Savings Plans.
+
+
+
+
+
+EC2 usecases - 
+
+Deliver secure, reliable, high-performance, and cost-effective compute infrastructure to meet demanding business needs.
+
+Access the on-demand infrastructure and capacity you need to run HPC applications faster and cost-effectively.
+
+Access environments in minutes, dynamically scale capacity as needed, and benefit from AWS’s pay-as-you-go pricing.
+
+Deliver the broadest choice of compute, networking (up to 400 Gbps), and storage services purpose-built to optimize price performance for ML projects
+
+
+
+
+
+EC2 Instance Types - 
+
+
+1) General purpose - General Purpose instances are designed to deliver a balance of compute, memory, and network resources. They are suitable for a wide range of applications, including web servers, small databases, development and test environments, and more.
+
+
+
+2) Compute optimized - Compute Optimized instances provide a higher ratio of compute power to memory. They excel in workloads that require high-performance processing such as batch processing, scientific modeling, gaming servers, and high-performance web servers.
+
+
+
+3) Memory optimized - Memory Optimized instances are designed to handle memory-intensive workloads. They are suitable for applications that require large amounts of memory, such as in-memory databases, real-time big data analytics, and high-performance computing.
+
+
+
+4) Storage optimized - Storage Optimized instances are optimized for applications that require high, sequential read and write access to large datasets. 
+They are ideal for tasks like data warehousing, log processing, and distributed file systems.
+
+
+
+5) Accelerated computing - Accelerated Computing Instances typically come with one or more types of accelerators, such as Graphics Processing Units (GPUs),
+Field Programmable Gate Arrays (FPGAs), or custom Application Specific Integrated Circuits (ASICs). 
+These accelerators offload computationally intensive tasks from the main CPU, enabling faster and more efficient processing for specific workloads.
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Instance Families - 
+
+
+ C – Compute
+
+ D – Dense storage
+
+ F – FPGA
+
+ G – GPU
+
+ Hpc – High performance computing
+
+ I – I/O
+
+ Inf – AWS Inferentia
+
+ M – Most scenarios
+
+ P – GPU
+
+ R – Random access memory
+
+ T – Turbo
+
+ Trn – AWS Tranium
+
+ U – Ultra-high memory
+
+ VT – Video Transcoding
+
+ X – Extra-large memory
+	
+	
+	
+	
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Additional capabilities - 
+
+ a – AMD processors
+
+ g – AWS Graviton processors
+
+ i – Intel processors
+
+ d – Instance store volumes
+
+ n – Network and EBS optimized
+
+ e – Extra storage or memory
+
+ z – High performance
+ 
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Regions - A region is a geographically distinct area that contains multiple data centers, which are referred to as availability zones.
+
+
+
+Availability Zone (Az) - An availability zone is one or more discrete data centers with independent power, cooling, and networking within a region. Multiple availability zones in a region are connected with low-latency, high-throughput, and highly redundant networking.
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Jenkins Application Deployment - 
+================================
+
+
+We will now Host Jenkins Application and Access that using the Browser.
+
+
+
+-> First we need to Install Java as it is a Prerequisite 
+
+sudo apt install openjdk-11-jdk
+
+
+
+-> Then we will Install Jenkins using below Command
+
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins 
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CA
+
+
+What is Amazon Elastic Compute Cloud (EC2) - Amazon Elastic Compute Cloud (EC2) is a web service provided by Amazon Web Services (AWS) that allows users to rent virtual servers, known as instances, in the cloud. Users can run applications on these instances, and EC2 provides scalable compute capacity, allowing users to easily scale up or down based on their computing needs. It's a central part of many cloud computing solutions, providing on-demand computing resources in a flexible and cost-effective manner.
+
+EC2 is a Regional Service 
+
+
+Features of EC2 - [IAIAIARESTVKL]
+
+1. Instance
+
+2. Amazon Machine Image (AMI's)
+
+3. Instance Types
+
+4. Auto Scaling
+
+5. Instance Store Volumes (ISV)
+
+6. Amazon EBS Volumes
+
+7. Regions, Availability Zones
+
+8. Elastic IP Address
+
+9. Security Groups
+
+10. Tags
+
+11. Virtual Private Clouds
+
+12. Key Pairs
+
+13. Load Balancer
+
+
+
+AWS virtual CPU provide krta h jisko wo VCPU bolta hai and RAM bhi virtually provide krta hai usko RAM hi bolte and  
+Elastic block storage - Volume -  HDD/SSD
+Elastic Network Interface - NIC
+
+Resources which AWS provides in EC2 Instance -  {Instance is also known as Virtual Machine}
+
+VCPU --> CPU
+RAM --> RAM
+Elastic Block Storage -- Volume --> HDD/ SSD
+Elastic Network Interface --> NIC
+
+--> Specialised hardware Oracle Company banati hai and uske system proprietary system rhte hai.
+
+Type 1 Hypervisor is used or supported which is also called as Bare Metal Hypervisor 
+A) Xen
+B) Nitro
+
+Amazon Machine Image  (AMI )  --> Jo bhi data rhta hai block storage per uska snapshot lete hai and Hardware configuration tag add krte us se OS ki machine image bunti hai wo image instance create krte waqt use krte h apun  for eg ubuntu , Amazon Linux , CentOS , Debian , Windows etc.
+
+Elastic Network Adaptor (ENA) no need to knw
+Highly Virtualised  Machine  (HVM)
+
+H1 and D2   They are SSD or HDD Optimized matlab Storage Optimized  (both are production grade instances)
+
+Compute Optimized  ( 2 VCPU and 4 GB Ram)
+Memory Optimized (1 vcpu me 8gb ram)
+Storage Optimized  (EBS)
+General Purpose Optimized ( Balance rahega na memory zyada na CPU zyada)
+
+--> Types of Storage - 
+
+A) Elastic Block Storage (EBS) Better durability then Instance Store Volumes 
+
+B) Instance Store Volumes (ISV) -->  Speed zyada degi  q ki directly attached rhti h but data durability is very low. 
+
+C) Elastic File System (EFS) 
+
+D) Simple Storage Service (S3)
+
+
+--> Instance Store Volumes gives us speed because it is a Directly Attached Storage (DAS) But we will not get Data Durability it has very low durability.
+
+--> Elastic Block Storage Better durability than ISV little less speed than Block Store and Good performance.
+
+t2.nano sochna bhi nhi 
+t2.micro includes (1vcpu and 1 GB RAM)
+t2.small includes ( 1vcpu and 2 GB RAM)
+t2medium includes ( 2vcpu and 4 GB RAM)
+t2.large includes (2vcpu and 8 GB RAM)
+t2.xlarge includes (4vcpu and 8 GB RAM)
+t2.2xlarge incl (8vcpu and 32 GB RAM)
+
+
+==================================
+EC2 Session Contd 30 July
+
+EC2 is a IAAS by AWS which provides us resources.
+
+Security group is a concept that protects traffic to the particular resource it is also called as Firewall. It acts as a virtual firewall for instances to control inbound and outbound traffic. You can define inbound and outbound rules that specify which traffic is allowed and denied. Security groups are often associated with instances and provide an additional layer of security beyond the instance's operating system firewall.
+
+Instance Types and the below are the AWS family - 
+
+1) C is Compute Optimized
+
+2l R is Memory Optimized or RAM Optimize
+
+3) M is General Purpose
+
+4) T is Burstable Instances {They earn certain cpu credits every particular hour and based on the credits that they have earned they will be able to burst or sprint above their base line performance.}
+
+
+--> Repository is Any particular place to store and  manage something. A one place jaha apne ko kisi chiz ko store Krna hai and then multiple users or servers will be  fetching or procuring that information whatever you have stored over there and they will bring that to their own system.
+
+
+--> Instance jab ubuntu ki repository jo ki Canonical hai uske pas request bhejti hai toh usko waha se response milta h but wo response phle firewall per aata h and firewall us se (source / Target destination , Protocol and Port ) q ki wo ek security ka layer hai instance k bahar.
+
+Firewall is of two types - 
+
+A) Stateless  (Request and Response dono manually allow kurna pdega)  Network Access Control List (NACL) is Stateless.
+
+B) Stateful --> If Request is allowed then Response is auto allowed.
+(EC2 Security Group is Stateful)
+Request is Outbound & Response is Inbound
+
+--> Security Group is Outside of the Instance.
+
+Elastic Block Storage ek block storage hai and storage hai toh /dev me rahega.
+1) For eg. /dev/xvda   
+-->Command used to check  {lsblk}
+
+2) Iske alag alag partitions honge (xvda1 , xvda14 , xvda15) 
+-->Command used to check  {growpart}
+
+3)  Wo partitions ko format kr ke filesystem bunta hai .
+(These are the two file system xfs and ext4)
+-->Command used to check  {resize2fs}
+
+EBS Volume is a AZ
