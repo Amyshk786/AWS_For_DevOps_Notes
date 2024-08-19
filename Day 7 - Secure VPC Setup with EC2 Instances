@@ -1,3 +1,9 @@
+
+
+Project Deployment - 
+=====================
+
+
 Step 1 - Go To VPC Console  -->   Create a VPC By Clicking on VPC and More  -->  Provide a Name [aws-prod-example]  
  
 2 AZs,  2 Public Subnets,  2 Private Subnet & NAT Gateway 1 Per AZ  [No VPC Endpoints for S3 Buckets]
