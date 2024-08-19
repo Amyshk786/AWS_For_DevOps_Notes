@@ -1,0 +1,35 @@
+Cloud Formation Template (CFT) 
+========================================
+
+
+
+
+Cloud Formation Templates basically are used to Create Infrastructure on AWS and they Implement the principles of Infrastructure as Code (IaC)
+
+
+CFT is a Template that helps in Cloud Formation & We are Talking about AWS Cloud. And It Helps us in Creating, Managing and Updating the Cloud Infrastructure on AWS.
+
+
+IaC Principle says that the Tool must act as a Middleman between User and 1 or Multiple Cloud Providers. [If User Submits a Template Then this IaC Tool has to take the Input and It has to Convert this template to a Language that the Cloud Provider Understands.  Usually the language that the Cloud Provider understand is API Call] (template can be YAML file, JSON file or Anything that is Declarative and Versioned in Nature)
+
+
+
+
+
+Features of CFT
+
+1) Use YAML
+
+2) Drift Detection
+
+3) Stacks
+
+
+
+[use YAML & AWS Toolkit plugins in VS Code for CFT]
+
+
+--> Assignment create a EC2 Instance using CFT.
+
+
+Link for AWS CFT Documentation - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html
