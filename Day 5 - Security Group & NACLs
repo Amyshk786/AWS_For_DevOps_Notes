@@ -1,4 +1,8 @@
 
+Day 5 - | AWS Security Group and NACL | Theory + Practical | AWS FREE COURSE by Abhishek 
+=========================================================================================
+
+
 Note - In AWS Security is a Shared Responsibility It Means AWS Will Tell Us to Use VPC, Security Groups, NACL, API Gateways Along With That AWS says They need DevOps Engineer or System Admins or AWS Admins to Add or Remove the Access for a Particular User.
 
 
@@ -31,7 +35,8 @@ Network Access Control Lists (NACLs):
 
 
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
