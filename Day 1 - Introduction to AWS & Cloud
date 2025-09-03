@@ -1,3 +1,8 @@
+
+Day-1 | Introduction to AWS | What is Public Cloud ? | Create an AWS Account
+==============================================================================
+
+
 What is Cloud - The cloud refers to a network of remote servers that store and manage data and applications, accessible via the internet. Instead of relying on local hardware and software, users can use cloud services to access and use computing resources, storage, and applications as needed. This offers flexibility, scalability, and cost efficiency, as users can pay for resources on a usage basis rather than investing in and maintaining their own physical infrastructure. Examples of cloud services include Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform.
 
 
@@ -140,7 +145,7 @@ Types Of EC2 Instances -
 
 
 Features of EC2 - (CSVDALSP)
-1. Customisation 
+1. Customization 
 2. Scalability 
 3. Variety of Instances 
 4. Data Storage Options 
@@ -161,3 +166,7 @@ EC2 Instances Purchasing Option - (OSR)
 
 5. Schedule Instance - particular time per le skte raat k 2 bje 4 bje taa k saste mile.
 6. Reserved Instance - 1 saal se 3 saal tuk k liye reserve krwate h
+
+
+
+
