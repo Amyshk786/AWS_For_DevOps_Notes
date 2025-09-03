@@ -1,3 +1,9 @@
+
+Day-10 | AWS CLI Deep Dive | Concept + Installation + Demo
+===========================================================
+
+
+
 AWS CLI - There are 2 ways of Interacting with AWS That is GUI and CLI.  GUI is not Automation Friendly for eg we want to create 30 S3 Buckets, 10 VPCs it will take a lot of time. So for Infrastructure Management or Infrastructure Automation we Use APIs and By Using these APIs we can Automate Creation, Deletion, Management of Resources on AWS. So For Eg we want to create 10 EC2 Instances so by using the AWS API we can write Shell Script and Invoke this API and we can directly send request programmatically. If we are using GUI we are performing the Tasks Manually as we Log In into the system, But when we use the API we programmatically reach that specific application. These programs can be Shell Scripts, CLI Designed by Someone, Python Code. 
 
 
