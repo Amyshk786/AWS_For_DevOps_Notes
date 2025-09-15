@@ -1,0 +1,78 @@
+- Go to AWS Code Build -> Create Build Project  -> Provide a Name to the Project [simple-python-flask-service] 
+
+
+- Source-1 Select Repo in My GitHub Account and Provide the URL of the Repo
+
+
+- Under Environment Select "Ubuntu" as the OS
+
+
+- Under Additional Configuration [Enable this flag if you want to build Docker images or want your builds to get elevated privileges] Check this Box
+
+
+- Create a New Service Role for this Demo
+
+
+- For Getting the Credentials Go To AWS Systems Manager and Go to Parameter Store and Create Secrets
+
+
+- Build-spec [Paste this]
+
+version: 0.2
+
+env:
+  parameter-store:
+    DOCKER_REGISTRY_USERNAME: /myapp/docker-credentials/username
+    DOCKER_REGISTRY_PASSWORD: /myapp/docker-credentials/password
+    DOCKER_REGISTRY_URL: /myapp/docker-registry/url
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+  pre_build:
+    commands:
+      - echo "Installing dependencies..."
+      - pip install -r day-14/simple-python-app/requirements.txt
+  build:
+    commands:
+      - echo "Running tests..."
+      - cd day-14/simple-python-app/
+      - echo "Building Docker image..."
+      - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
+      - docker build -t "docker.io/amyshaikh623/simple-python-flask-app:latest" .
+      - docker push "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/simple-python-flask-app:latest"
+  post_build:
+    commands:
+      - echo "Build completed successfully!"
+artifacts:
+  files:
+    - '**/*'
+  base-directory: ../simple-python-app
+
+
+
+
+
+- Create Build Project 
+
+
+# So this is How we have Implemented CI using AWS CodeBuild, Now the last step that is left which is to Integrate it with AWS Code Pipeline because we don't want to do this manually. We want it to be invoked automatically and that invocation will be done by AWS Code Pipeline whenever a code change is made to GitHub Repository.
+
+
+- Go to AWS Code Pipeline  ->  Build Custom Pipeline  ->  Name as sample-python-app
+
+- GitHub Via OAuth -> Do the Setup and the Select the Repo and Branch
+
+- Build Provider  -> Select Other Build Provider and then Select the AWS CodeBuild Project which we have created
+
+- Skip the "Test" & "Deploy" Stage and Click on Create Pipeline
+
+
+
+# Now if we do Any Code Change in Our Repo the Pipeline will be Automatically Triggered.
+
+
+
+
+
