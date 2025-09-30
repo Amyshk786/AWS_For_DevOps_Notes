@@ -1,0 +1,71 @@
+
+Day-7 | AWS Project Used In Production | Complete Implementation
+===================================================================
+
+
+
+Project Deployment -  
+=====================
+
+
+Step 1 - Go To VPC Console  -->   Create a VPC By Clicking on VPC and More  -->  Provide a Name [aws-prod-example]  
+ 
+2 AZs,  2 Public Subnets,  2 Private Subnet & NAT Gateway 1 Per AZ  [No VPC Endpoints for S3 Buckets]
+  
+  
+
+Step 2 - Go To EC2 Dashboard  -> Auto Scaling Group  ->  Create Auto Scaling Group  ->  Create a Launch Template, Give name & desc to the template
+
+Select Recently Used AMI [Ubuntu],  Instance Type t2.micro,  Key Pair,  Create new Security Group [aws-prod-example]  ->  Select the VPC which we have Created
+
+Click on Create Launch Template
+
+
+
+Step 3 - ASG Name [aws-prod-example]  ->  Select the Template which we have created  ->  Select the VPC Which we have created and Add the Instances in the Pvt Subnets  ->  Desired Capacity = 2,  Min = 1,  Max = 4  -> Next and Create ASG  [In Few Mins 2 Instances will be Launched] 
+
+
+
+Step 4 - Create a Bastion Host Instance as we will be Using that to Connect with our Applications [It shud be in the same VPC & Enable Public IP]
+
+Copy the key to the Bastion Host so we can login to the Instances which are in Pvt Subnet
+
+
+
+Step 5 - Login to 1st Pvt Subnet Instance and follow the below steps  [Yahi same 2nd me bhi krna h usme Second dalna h first ki jagah]
+
+vim index.html
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First AWS PROJECT To Demonstrate Apps in Private Subnet</h1>
+
+</body>
+</html>
+
+
+Save This File & Run the Python Server
+
+
+python3 -m http.server 8000
+
+
+
+
+
+Step 6 - Go to EC2  -> Load balancer  ->  Application Load Balancer  -> Name [aws-prod-example]  ->  It shud be Internet Facing & In Pub Subnet  -> Select the VPC
+
+Select Both the AZs & Pub Subnet  ->  Security Group [aws-prod-example]
+
+Listners & Routing  -> Create a Target Group  -> Instances  -> Name ->  HTTP 8000  ->  Select the 2 Pvt Instances  [Include as Pending]  ->  Create Target Grp
+
+Port 80 & Select the Target Group which we have Created  ->  Create Load Balancer 
+
+
+After Creating the Load Balancer Just Copy the DNS Name [which is under load balancer details]
+
+
+
