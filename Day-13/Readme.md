@@ -1,0 +1,81 @@
+
+
+Day-13 | AWS Code Pipeline | Jenkins vs AWS Code Pipeline | Open Source vs AWS Managed
+========================================================================================
+
+
+
+
+Jenkins is an open source platform there is also an Enterprise Cloud-Based Support but many organizations use Jenkins and how does the workflow begin Basically there is a Source Code Repository let's consider it as a GitHub or bitbucket or GitLab or anything that adheres to the principle of Version Control System Mostly the Principles of Git there is a target platform that is called Kubernetes or you know the target platform can also be a virtual machine but these days everything is on Kubernetes right people are moving towards Kubernetes so there will be a User let's call this user as a developer and he makes a code Commit.
+
+
+
+
+This is not AWS code Commit This is a general code commit right if you are a Java developer if this Git Repository is hosting the Java code or if this Git Repository is hosting the Python code and let's say you are working in this organization and the user who is developer makes a code change  and puts the code change to the git repository now for easy understanding let me call it as GitHub.
+
+
+
+
+So there is a user who made a code change let's say he made a change to the HTML file or he made a change to one of the .Java files and he commits the code to the git Repository what happens after that is the one main Orchestrator comes into the picture that is Jenkins why I am taking example of Jenkins because I hope many people will correlate to this and Jenkins is the most widely used tool at this point of time at the point of making this video Jenkins is the most used CI platform so this GitHub the DevOps engineers that is you and me we configure a web hook that triggers the Jenkins pipeline okay what is a Jenkins pipeline the code that we write in Jenkins we write declarative pipelines or scripted pipelines in Jenkins in The Groovy scripting and what these pipelines do is they are typically responsible for two actions one is continuous integration and the second thing is to invoke The Continuous delivery watch this very carefully I said for Implementing continuous integration and invoking continuous delivery right one is implementation other is invoking because Jenkins is more or less a continuous integration platform only.
+
+
+
+
+
+Jenkins is not responsible for continuous delivery but Jenkins invokes The Continuous delivery right and exactly same thing I am going to explain through code pipeline AWS code pipeline as well so listen to it very carefully so what Jenkins does here is whenever developer makes a code change and GitHub webhook triggers the Jenkins pipeline that you have written a declarative Jenkins pipeline that implements The Continuous integration first what is continuous integration in the continuous integration you have multiple stages that is in the declarative continuous pipeline that you have written The Groovy scripting that you have written implements code checkout right implements build and unit test cases so this stages depends upon organization to organization it depends upon organization to organization but I am trying to present the most widely used stages then you can implement the static code analysis you can use tools like Sonar Cube for implementation.
+
+
+
+
+
+Then there is a Docker image scanning or right there are stages regarding to the image creation then you have Docker image scanning and finally there is a Docker image push stage so these are multiple stages that are part of the continuous integration and like I told you this stages can increase the stages can decrease there is nothing like your continuous integration should have these stages only depend upon the application that you are using is it a mobile application is it a web application or is it related to ML is it related to AI so depending upon the applications your stages keeps changing but for the purpose of understanding I am using these changes which are these stages which are standard and once the docker image creation and Docker image is pushed for your micro service then what Jenkins can do is it can invoke The Continuous delivery process now there are multiple ways of invoking this continuous delivery process one is you can use ansible which is an outdated way or you can use some shell scripts which is again an outdated way or you can use platforms like Argo CD which is GitHub based platform so you can use Argo CD or you can use Flux CD  you can use multiple GitHub platforms that are available in market and GitHub is the best way of implementing continuous delivery.
+
+
+
+
+
+Once the docker image is created you can use shell script to write a Kubernetes YAML file and push this Kubernetes YAML file to a Kubernetes cluster or you can create a Helm chat using some shell scripts or Python scripts and again you can use the cube CTL or Helm command to push it to one Kubernetes cluster and in some cases when there are multiple Kubernetes clusters people recommend ansible as well so that using ansible you can configure multiple Kubernetes clusters as host and you can push them using the ansible Playbook but the recommended approach is always using git Ops because using GitHub you can not only push the artifacts not only push your Kubernetes related resources onto the Kubernetes cluster but you can also constantly manage them because you tops tools can constantly reconcile they are declarative in nature you know they can always make sure that if someone modifies resources on the Kubernetes cluster it will revoke the change or it will put the change back to the state that is that is single source of Truth which is a git platform. [D]
+
+
+
+
+
+Now this is about the Jenkins pattern right so what Jenkins is doing here primarily is it is acting as an orchestrator where it is implementing The Continuous integration and it is either facilitating or even in Jenkins last stage of your Jenkins groovy you can use shell script or you can use ansible and you can implement the CD part as well but mostly Jenkins is only invoking the continuous delivery.
+
+
+
+
+
+Now let's try to understand this same workflow using AWS code pipeline so that you will understand code pipeline in a very very simple way again there is a user now let's say the requirement is for you to move this entire ecosystem onto AWS managed services so what we will do is again firstly there is a User and now this user makes a code change not to GitHub but this user makes a code change to the AWS code commit. AWS code commit can be compared with GitHub or Gitlab or any other Version Control Systems because AWS code commit is also a Version Control System but this time here it is a managed Version Control System it is a AWS managed version control system so you know you don't have to worry about the downtime you don't have to worry about scaling this up increasing the resources of this version control system or you know whenever you don't want it you can shut down this version control system and you don't have to pay for it now once this is done what this AWS code commit triggers here previously the GitHub first triggering a web hook.
+
+
+
+
+
+I mean GitHub web Hook was triggering a Jenkins pipeline here you will trigger a AWS code pipeline right so previously you are triggering the Jenkins pipeline but here you are triggering AWS code pipeline so Jenkins pipelines or Jenkins can be compared with AWS code pipeline service. Now AWS code pipeline takes the responsibility of invoking continuous integration and invoking continuous delivery here I said invoking continuous integration and also invoking continuous delivery last time in Jenkins I said implementing continuous integration and invoking delivery but here what AWS code pipeline does is in most of the cases it will invoke The Continuous integration using a service called AWS code build so mostly this AWS code build of course you can write some scripts as well but mostly what people do is they make use of this AWS code build to implement all the stages right what all the stages that are available instead of writing them in the AWS code pipeline AWS code build is responsible for all this continuous integration stages and then there is something called code deploy where code deploy will take care of the CD part and it will deploy either to Kubernetes Cluster or ec2 instances or ECS whatever you would like to right.
+
+
+
+
+
+
+So now did you understand how does this AWS Services fit into the places when you try to compare it with Jenkins in Jenkins integration part that I have explained you Jenkins is working as an orchestrator there is GitHub repository there is Argo CD and then there is Jenkins pipeline right these were the four things that I've explained in the diagram now there is AWS code pipeline code commit code deploy and AWS pipeline. Code pipeline is a very simple concept if you know Jenkins or if you know GitHub actions or if you know Gitlab then there is no difference here AWS code pipeline will also act as an orchestrator.
+
+
+
+
+
+
+Jenkins is a preferred solution in that case because you know Jenkins firstly is an open source and for each and every organization management is not that big problem right so for some companies they can run entire Jenkins workloads on two ec2 instances or you know on two worker nodes if they are managing it efficiently using Docker slaves. Docker agents and what this Docker agent is doing when the pipeline is run the docker agent gets started and once the pipeline is completed the docker agent or the docker container that gets deleted right it gets removed complete completely so that way you are efficiently managing the infrastructure of your Jenkins so if there are efficient DevOps engineers and if companies don't require to spin up virtual machines In that cases they don't have to use this services and most of the times people don't have problem with managing Jenkins or CI infrastructure and the other thing is that you can also create this Jenkins on ec2 instances right when you create Jenkins on ec2 instances you can configure Auto scaling groups you can configure the AWS Cloud watch you can configure AWS alarms and AWS will definitely take care of
+this ec2 instances right so if you want to spin up or if you want to scale up then you can just go to your AWS console and you can scale up so that way even if you want to manage Jenkins then AWS has Solutions like ec2 so you can just spin up ec2 instances configure Auto scaling groups and install Jenkins in them so even that way you can avoid using this AWS managed services and this manage services if you are not using them efficiently the price will also go up As they are pay as you use.
+
+
+
+
+
+If someone is asking about advantages of code pipeline you will tell them that everything is managed by AWS so I don't have to worry about it tomorrow if cost is not a barrier for me then even if scaling up of this AWS code pipeline resources scaling down reliability the management everything is taken care by AWS.
+
+
+
+
+
