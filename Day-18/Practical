@@ -1,0 +1,23 @@
+
+AWS Cost Optimization | Most Popular Cloud and DevOps project| Event Driven Serverless Practical
+==================================================================================================
+
+
+Go To EC2 Dashboard and Create a EC2 Instance of t2.micro
+
+Go To Snapshots and Create a Snapshot from the Volume which is By Default attached to the EC2 Instance
+
+Go To Lambda and Create a Function and Select the "Runtime" as Python
+
+Go To Configurations -> Permissions  Then Open the IAM Role and Provide the Below Mentiond Policy
+
+- Create a Policy  -> Select Service as EC2 
+
+Describe Instances & Describe Volumes
+
+Describe Snapshots & Delete Snapshots
+
+
+# Now if we will run this Function at first Nothing will get Deleted as the Snapshot is associated with the Volume which is Attached to an EC2 Instance.
+
+But when we Delete the EC2 Instance and Re-Run the Function the Snapshot will be Deleted as the EC2 Instance is Deleted and as the Instance is Deleted the Volume is also deleted.
